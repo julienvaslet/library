@@ -1,9 +1,14 @@
 applicationsDirectory := apps
 binariesDirectory := bin
 librariesDirectory := lib
+for :=
 
 applications := $(shell cd $(applicationsDirectory) && ls -1 *.cpp | sed 's|\.cpp$$||')
 options :=
+
+ifneq ($(for),)
+	options := $(options) -t $(for)
+endif
 
 all: $(applications)
 
