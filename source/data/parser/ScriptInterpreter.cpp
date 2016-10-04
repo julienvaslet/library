@@ -2,10 +2,8 @@
 #include <algorithm>
 #include <sstream>
 
-#ifdef DEBUG0
 #include <tools/logger/Logger.h>
 using namespace tools::logger;
-#endif
 
 using namespace std;
 

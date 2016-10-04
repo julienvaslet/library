@@ -153,6 +153,7 @@ namespace data
 			ostringstream currentPath;
 			string currentName;
 			int currentIndex;
+			Json * previousValue = NULL;
 			
 			// TODO: complete set() fctionality
 			while( !names.empty() )
@@ -170,7 +171,7 @@ namespace data
 				{
 					map<string, Json *>::iterator it = this->variables.find( names.front() );
 					
-					if( it != this->variable.end() )
+					if( it != this->variables.end() )
 						previousValue = it->second;
 				}
 				
@@ -179,7 +180,9 @@ namespace data
 				{
 					if( previousValue == NULL || previousValue->getType() != Json::Array )
 					{
+						#ifdef DEBUG0
 						Logger::get() << "[DOM] Unable to access element: \"" << currentPath.str() << "\" is not an array." << Logger::endl;
+						#endif
 						break;
 					}
 					
@@ -188,11 +191,13 @@ namespace data
 					if( indices.front() < array->length() )
 					{
 						currentPath << "[" << indices.front() << "]";
-						previousValue = previousValue.at( indices.front() );
+						previousValue = array->get( indices.front() );
 					}
 					else
 					{
+						#ifdef DEBUG0
 						Logger::get() << "[DOM] Specified index (" << indices.front() << ") is out of array (\"" << currentPath.str() << "\")." << Logger::endl;
+						#endif
 						break;
 					}
 				}
