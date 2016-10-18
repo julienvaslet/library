@@ -127,13 +127,13 @@ namespace opengl
 	
 	Vector Vector::operator*( const Matrix& matrix )
 	{
-		// Implements result = matrix * vector
+		// Implements result = matrix * (vector,1.0)
 		
 		Vector v;
 		
-		v.x = this->x * matrix.get( 1, 1 ) + this->y * matrix.get( 2, 1 ) + this->z * matrix.get( 3, 1 ) + matrix.get( 4, 1 );
-		v.y = this->x * matrix.get( 1, 2 ) + this->y * matrix.get( 2, 2 ) + this->z * matrix.get( 3, 2 ) + matrix.get( 4, 2 );
-		v.z = this->x * matrix.get( 1, 3 ) + this->y * matrix.get( 2, 3 ) + this->z * matrix.get( 3, 3 ) + matrix.get( 4, 3 );
+		v.x = this->x * matrix.get( 1, 1 ) + this->y * matrix.get( 1, 2 ) + this->z * matrix.get( 1, 3 ) + matrix.get( 1, 4 );
+		v.y = this->x * matrix.get( 2, 1 ) + this->y * matrix.get( 2, 2 ) + this->z * matrix.get( 2, 3 ) + matrix.get( 2, 4 );
+		v.z = this->x * matrix.get( 3, 1 ) + this->y * matrix.get( 3, 2 ) + this->z * matrix.get( 3, 3 ) + matrix.get( 3, 4 );
 
 		return v;
 	}
