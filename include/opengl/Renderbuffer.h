@@ -19,6 +19,16 @@ namespace opengl
 			unsigned int getId() const;
 			void bind() const;
 			
+			int getWidth() const;
+			int getHeight() const;
+			int getInternalFormat() const;
+			int getRedSize() const;
+			int getGreenSize() const;
+			int getBlueSize() const;
+			int getAlphaSize() const;
+			int getDepthSize() const;
+			int getStencilSize() const;
+			
 			static void unbind();
 	};
 }

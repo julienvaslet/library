@@ -51,16 +51,103 @@ namespace opengl
 		CheckOpenGLError(glBindRenderbuffer);
 	}
 	
-	/*bind then glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_.., int* );
-	GL_RENDERBUFFER_WIDTH
-GL_RENDERBUFFER_HEIGHT
-GL_RENDERBUFFER_INTERNAL_FORMAT
-GL_RENDERBUFFER_RED_SIZE
-GL_RENDERBUFFER_GREEN_SIZE
-GL_RENDERBUFFER_BLUE_SIZE
-GL_RENDERBUFFER_ALPHA_SIZE
-GL_RENDERBUFFER_DEPTH_SIZE
-GL_RENDERBUFFER_STENCIL_SIZE
-*/
+	int Renderbuffer::getWidth() const
+	{
+		this->bind();
+		int value = 0;
+		
+		glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &value );
+		CheckOpenGLError(glGetRenderbufferParameteriv);
+		
+		return value;
+	}
+	
+	int Renderbuffer::getHeight() const
+	{
+		this->bind();
+		int value = 0;
+		
+		glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &value );
+		CheckOpenGLError(glGetRenderbufferParameteriv);
+		
+		return value;
+	}
+	
+	int Renderbuffer::getInternalFormat() const
+	{
+		this->bind();
+		int value = 0;
+		
+		glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_INTERNAL_FORMAT, &value );
+		CheckOpenGLError(glGetRenderbufferParameteriv);
+		
+		return value;
+	}
+	
+	int Renderbuffer::getRedSize() const
+	{
+		this->bind();
+		int value = 0;
+		
+		glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_RED_SIZE, &value );
+		CheckOpenGLError(glGetRenderbufferParameteriv);
+		
+		return value;
+	}
+	int 
+	Renderbuffer::getGreenSize() const
+	{
+		this->bind();
+		int value = 0;
+		
+		glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_GREEN_SIZE, &value );
+		CheckOpenGLError(glGetRenderbufferParameteriv);
+		
+		return value;
+	}
+	
+	int Renderbuffer::getBlueSize() const
+	{
+		this->bind();
+		int value = 0;
+		
+		glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_BLUE_SIZE, &value );
+		CheckOpenGLError(glGetRenderbufferParameteriv);
+		
+		return value;
+	}
+	
+	int Renderbuffer::getAlphaSize() const
+	{
+		this->bind();
+		int value = 0;
+		
+		glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_ALPHA_SIZE, &value );
+		CheckOpenGLError(glGetRenderbufferParameteriv);
+		
+		return value;
+	}
+	
+	int Renderbuffer::getDepthSize() const
+	{
+		this->bind();
+		int value = 0;
+		
+		glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_DEPTH_SIZE, &value );
+		CheckOpenGLError(glGetRenderbufferParameteriv);
+		
+		return value;
+	}
+	
+	int Renderbuffer::getStencilSize() const
+	{
+		this->bind();
+		int value = 0;
+		
+		glGetRenderbufferParameteriv( GL_RENDERBUFFER, GL_RENDERBUFFER_STENCIL_SIZE, &value );
+		CheckOpenGLError(glGetRenderbufferParameteriv);
+		
+		return value;
+	}
 }
 
