@@ -101,6 +101,18 @@ DefineOpenGLFunction( GLboolean, glIsBuffer, GLuint );
 DefineOpenGLFunction( void, glDeleteBuffers, GLsizei, GLuint * );
 DefineOpenGLFunction( void, glBindBuffer, GLenum, GLuint );
 DefineOpenGLFunction( void, glBufferData, GLenum, GLsizeiptr, const void *, GLenum );
+DefineOpenGLFunction( void, glGenFramebuffers, GLsizei, GLuint * );
+DefineOpenGLFunction( void, glDeleteFramebuffers, GLsizei, GLuint * );
+DefineOpenGLFunction( void, glBindFramebuffer, GLenum, GLuint );
+DefineOpenGLFunction( void, glGenRenderbuffers, GLsizei, GLuint * );
+DefineOpenGLFunction( void, glDeleteRenderbuffers, GLsizei, GLuint * );
+DefineOpenGLFunction( void, glBindRenderbuffer, GLenum, GLuint );
+DefineOpenGLFunction( void, glRenderbufferStorage, GLenum, GLenum, GLsizei, GLsizei );
+DefineOpenGLFunction( void, glGetRenderbufferParameteriv, GLenum, GLenum, GLint * );
+DefineOpenGLFunction( void, glFramebufferTexture2D, GLenum, GLenum, GLenum, GLuint, GLint );
+DefineOpenGLFunction( void, glFramebufferRenderbuffer, GLenum, GLenum, GLenum, GLuint );
+DefineOpenGLFunction( void, glRenderbufferStorageMultisample, GLenum, GLsizei, GLenum, GLsizei, GLsizei );
+DefineOpenGLFunction( GLenum, glCheckFramebufferStatus, GLenum );
 #endif
 
 // Shaders functions

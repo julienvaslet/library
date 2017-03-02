@@ -106,8 +106,58 @@ namespace data
 			return image;
 		}
 		
-		void Jpeg::write( const Image& image, const string& filename )
+		void Jpeg::write( const Image& image, const string& filename, int quality )
 		{
+			FILE * fd = fopen( filename.c_str(), "wb" );
+			
+			if( fd != NULL )
+			{
+				struct jpeg_compress_struct cinfo;
+				struct jpeg_error_mgr jerr;
+				
+				cinfo.err = jpeg_std_error( &jerr );
+				jpeg_create_compress( &cinfo );
+				jpeg_stdio_dest( &cinfo, fd );
+				
+				cinfo.image_width = image.getWidth();
+				cinfo.image_height = image.getHeight();
+				cinfo.input_components = 3;
+				cinfo.in_color_space = JCS_RGB;
+				
+				jpeg_set_defaults( &cinfo );
+				jpeg_set_quality( &cinfo, quality, true );
+				jpeg_start_compress( &cinfo, true );
+				
+				JSAMPROW row_pointer;
+				const unsigned char * buffer = image.getData();
+				unsigned int row_size = cinfo.image_width * 3;
+				unsigned int row_size_alpha = cinfo.image_width * 4;
+				vector<unsigned char> row( row_size );
+				
+				while( cinfo.next_scanline < cinfo.image_height )
+				{
+					for( unsigned int i = 0, j = cinfo.next_scanline * row_size_alpha ; i < row_size ; i++ )
+					{
+						row[i] = buffer[j++];
+						
+						// Skip alpha.
+						if( i % 3 == 2 ) j++;
+					}
+						
+					row_pointer = (JSAMPROW) &(row[0]);
+					jpeg_write_scanlines( &cinfo, &row_pointer, 1 );
+				}
+				
+				jpeg_finish_compress( &cinfo );
+				fclose( fd );
+				
+				jpeg_destroy_compress( &cinfo );
+			}
+			
+			#ifdef DEBUG0
+			else
+				Logger::get() << "[Jpeg][" << filename << "] Can not open file for writing." << Logger::endl;
+			#endif
 		}
 	}
 }

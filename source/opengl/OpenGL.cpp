@@ -162,6 +162,18 @@ namespace opengl
 		LoadOpenGLFunction(glDeleteBuffers);
 		LoadOpenGLFunction(glBindBuffer);
 		LoadOpenGLFunction(glBufferData);
+		LoadOpenGLFunction(glGenFramebuffers);
+		LoadOpenGLFunction(glDeleteFramebuffers);
+		LoadOpenGLFunction(glBindFramebuffer);
+		LoadOpenGLFunction(glGenRenderbuffers);
+		LoadOpenGLFunction(glDeleteRenderbuffers);
+		LoadOpenGLFunction(glBindRenderbuffer);
+		LoadOpenGLFunction(glRenderbufferStorage);
+		LoadOpenGLFunction(glGetRenderbufferParameteriv);
+		LoadOpenGLFunction(glFramebufferTexture2D);
+		LoadOpenGLFunction(glFramebufferRenderbuffer);
+		LoadOpenGLFunction(glRenderbufferStorageMultisample);
+		LoadOpenGLFunction(glCheckFramebufferStatus);
 #endif
 		
 		// Shaders functions
@@ -245,6 +257,18 @@ InitializeOpenGLFunction(glIsBuffer);
 InitializeOpenGLFunction(glDeleteBuffers);
 InitializeOpenGLFunction(glBindBuffer);
 InitializeOpenGLFunction(glBufferData);
+InitializeOpenGLFunction(glGenFramebuffers);
+InitializeOpenGLFunction(glDeleteFramebuffers);
+InitializeOpenGLFunction(glBindFramebuffer);
+InitializeOpenGLFunction(glGenRenderbuffers);
+InitializeOpenGLFunction(glDeleteRenderbuffers);
+InitializeOpenGLFunction(glBindRenderbuffer);
+InitializeOpenGLFunction(glRenderbufferStorage);
+InitializeOpenGLFunction(glGetRenderbufferParameteriv);
+InitializeOpenGLFunction(glFramebufferTexture2D);
+InitializeOpenGLFunction(glFramebufferRenderbuffer);
+InitializeOpenGLFunction(glRenderbufferStorageMultisample);
+InitializeOpenGLFunction(glCheckFramebufferStatus);
 #endif
 
 // Shaders functions

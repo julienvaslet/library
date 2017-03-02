@@ -28,7 +28,7 @@ namespace data
 				virtual ~Jpeg();
 				
 				static Image * load( const string& filename );
-				static void write( const Image& image, const string& filename );
+				static void write( const Image& image, const string& filename, int quality = 75 );
 		};
 	}
 }
